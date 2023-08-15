@@ -1,0 +1,159 @@
+<!-- PHONE -->
+<h2 [align]="'center'" class="text-4xl text-yellow-300 font-bold uppercase">
+  chat anywhere
+</h2>
+
+<section class="mt-20 pb-40">
+  <app-sidebar></app-sidebar>
+
+  <!-- div Effect -->
+  <div
+    class="fixed bottom-[-250px] right-20 w-[500px] h-[400px] rounded-full bg-pink-400/10 blur-[150px] pointer-events-none select-none"
+  ></div>
+
+  <!-- Buttons -->
+  <section *ngIf="showLogInButtons" class="flex gap-2">
+    <button
+      (click)="LogWithGoogle()"
+      mat-raised-button
+      class="bg-white text-black px-4 rounded-md"
+      routerLink="/chat"
+    >
+      <span class="flex gap-1 items-center">
+        <svg
+          class="w-6 h-6 mr-2"
+          width="256"
+          height="262"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid"
+          viewBox="0 0 256 262"
+        >
+          <path
+            d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"
+            fill="#4285F4"
+          ></path>
+          <path
+            d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1"
+            fill="#34A853"
+          ></path>
+          <path
+            d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782"
+            fill="#FBBC05"
+          ></path>
+          <path
+            d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"
+            fill="#EB4335"
+          ></path>
+        </svg>
+        Enter with Google
+      </span>
+    </button>
+  </section>
+
+  <dl class="mt-10">
+    <dt class="text-3xl font-bold text-slate-300 mt-5">
+      ¿What are our services?
+    </dt>
+    <dd class="mt-4 text-lg">
+      <p class="text-bl" [style]="{ 'text-wrap': 'balance' }">
+        We make sure that your messages are sent safely and faster.
+      </p>
+      <p class="mt-4" [style]="{ 'text-wrap': 'balance' }">
+        At our esteemed company, we have made it our mission to redefine the way
+        messages are delivered, ensuring that each communication reaches its
+        intended recipient with the utmost safety and speed.
+      </p>
+    </dd>
+  </dl>
+
+  <dl class="mt-20">
+    <dt class="text-3xl font-bold text-slate-300 mt-5">
+      ¿How are we different from other companies?
+    </dt>
+    <dd class="mt-4 text-lg">
+      <p [style]="{ 'text-wrap': 'balance' }">
+        Your chats are 100% secure and being a community that can chat freely
+        without restrictions or bans, you won't worry about the rest.
+      </p>
+      <p class="mt-3" [style]="{ 'text-wrap': 'balance' }">
+        Send any type of images, videos, audios, location, you will find
+        multiple services such as downloading YouTube videos, generating QR
+        codes, etc... You will find the services on other web pages made by the
+        same creator.
+      </p>
+    </dd>
+  </dl>
+</section>
+
+<!-- PCCC -->
+<!-- <h2 [align]="'center'" class="text-4xl text-yellow-300 font-bold uppercase">chat anywhere</h2>
+
+<section class="mt-20 w-[600px] pb-40">
+  <app-sidebar></app-sidebar>
+
+  
+  <div
+    class="fixed bottom-[-250px] right-20 w-[500px] h-[400px] rounded-full bg-pink-400/10 blur-[150px] pointer-events-none select-none">
+  </div>
+
+  
+  <section *ngIf="showLogInButtons" class="flex gap-2">
+    <button (click)="LogWithGoogle()" mat-raised-button class="bg-white text-black px-4 rounded-md" routerLink="/chat">
+      <span class="flex gap-1 items-center">
+        <svg class="w-6 h-6 mr-2" width="256" height="262" xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid" viewBox="0 0 256 262">
+          <path
+            d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"
+            fill="#4285F4"></path>
+          <path
+            d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1"
+            fill="#34A853"></path>
+          <path
+            d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782"
+            fill="#FBBC05"></path>
+          <path
+            d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"
+            fill="#EB4335"></path>
+        </svg>
+        Enter with Google
+      </span>
+    </button>
+
+    <button (click)="LogWithGitHub()" mat-raised-button class="hbg-white text-black px-4 rounded-md">
+      <span class="flex gap-1 items-center">
+        <svg class="w-6 h-6 mr-2" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+        Enter with Github
+      </span>
+    </button>
+
+  </section>
+
+  <dl class="mt-10">
+    <dt class="text-3xl font-bold text-slate-300 mt-5">¿What are our services?</dt>
+    <dd class="mt-4 text-lg">
+      <p class="text-bl" [style]="{'text-wrap': 'balance'}">We make sure that your messages are sent safely and
+        faster.</p>
+      <p class="mt-3" [style]="{'text-wrap': 'balance'}">At our esteemed company, we have made it our mission to
+        redefine the way messages are delivered, ensuring that each communication reaches its intended recipient with
+        the utmost safety and speed.</p>
+    </dd>
+  </dl>
+
+  <dl class="mt-20">
+    <dt class="text-3xl font-bold text-slate-300 mt-5">¿How are we different from other companies?</dt>
+    <dd class="mt-4 text-lg">
+      <p [style]="{'text-wrap': 'balance'}">Your chats are 100% secure and being a community that can chat freely
+        without restrictions or bans, you won't worry about the rest.</p>
+      <p class="mt-3" [style]="{'text-wrap':'balance'}">
+        Send any type of images, videos, audios, location, you will find multiple services such as downloading YouTube
+        videos, generating QR codes, etc... You will find the services on other web pages made by the same creator.
+      </p>
+    </dd>
+  </dl>
+
+
+</section> -->

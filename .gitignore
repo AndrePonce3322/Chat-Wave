@@ -40,3 +40,13 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Env files
+.env
+tailwind.config.js
+
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json

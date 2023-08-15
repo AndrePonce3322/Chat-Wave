@@ -1,0 +1,375 @@
+<main
+  class="w-screen h-[100svh] absolute bg-black rounded flex left-0 top-0 overflow-hidden"
+>
+  <!-- Persons -->
+  <section
+    class="min-w-[18rem] person-list h-full bg-[#1E1F22] flex flex-col pb-8"
+  >
+    <!-- Title -->
+    <section class="flex gap-2 p-4 select-none pb-1">
+      <h1 class="text-white text-2xl font-bold mt-0 p-0">Connected</h1>
+      <i class="ti ti-access-point text-2xl icon text-green-500 pt-[2px]"></i>
+    </section>
+
+    <!-- Users -->
+    <section class="flex flex-col mt-2 gap-1 select-none overflow-auto">
+      <div
+        class="w-full h-16 p-editable flex gap-2 transition cursor-pointer hover:bg-slate-400/20"
+        *ngFor="let user of UsersArray"
+        title="{{ user.name }}"
+      >
+        <div class="flex items-center gap-2">
+          <img
+            class="h-9 w-9 rounded-full object-cover"
+            [src]="user.img"
+            alt="fotoperfil"
+          />
+          <span class="text-base font-semibold">{{ user.name }}</span>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- Chats -->
+  <section class="w-full h-full bg-[#313338] flex flex-col">
+    <div class="flex items-center gap-2 p-2 px-4 border-b-2 border-b-[#28292b]">
+      <img
+        class="w-10 h-10 rounded-full object-cover"
+        src="https://i.pinimg.com/564x/51/63/93/5163933e766399c5b333e0ddb4d6183f.jpg"
+        alt="photo group"
+      />
+      <h2 class="font-semibold">ShitPosting Group</h2>
+      <span class="text-green-400">&#9679;</span>
+    </div>
+
+    <!-- Contenedor de mensajes -->
+    <main class="w-full h-full relative flex flex-col flex-grow">
+      <!-- Contenedor Del Mensaje completo -->
+      <div
+        #Container
+        class="flex flex-col flex-grow h-0 p-4 overflow-auto contenedor-msg"
+      >
+        <div
+          class="flex w-full mt-2 space-x-3 max-w-lg relative"
+          *ngFor="let message of messages"
+        >
+
+          <div
+            class="flex-shrink-0 h-10 w-10 rounded-full overflow-hidden mt-2"
+          >
+            <img
+              src="{{ message.user.img }}"
+              alt="{{ message.user.name }}"
+              class="w-full h-full object-cover select-none pointer-events-none"
+            />
+          </div>
+
+          <div>
+            <div class="mb-1">
+              <span class="text-sm font-semibold">{{ message.user.name }}</span>
+            </div>
+
+            <div
+              class="bg-[#4E5058] p-3 rounded-r-lg rounded-bl-lg flex flex-col gap-2 relative"
+            >
+              <!-- Message content -->
+              <p class="text-sm" *ngIf="message.messageText !== ''">
+                {{ message.messageText }}
+              </p>
+
+              <img
+                *ngIf="message.img"
+                (click)="FullScreenImage(message.img)"
+                aria-hidden="true"
+                class="max-h-80 object-cover cursor-pointer rounded select-none"
+                src="{{ message.img }}"
+                alt="image send by {{ message.user.name }}"
+              />
+
+              <video
+                *ngIf="message.video"
+                class="max-h-80 rounded outline-none video-player"
+                controls
+              >
+                <source [src]="message.video" />
+                <p>
+                  Your browser doesn't support HTML video. Here is a
+                  <a [href]="message.video">link to the video</a>
+                  instead.
+                </p>
+              </video>
+            </div>
+
+            <span class="text-xs text-gray-500 leading-none">{{
+              message.createdAt | date : "medium"
+            }}</span>
+          </div>
+        </div>
+
+        <section
+          *ngIf="videoDetails"
+          class="flex flex-col justify-center w-72 p-2 bg-slate-800 rounded relative gap-2 left-12 mt-8"
+        >
+          <div class="flex justify-between text-sm font-semibold">
+            <span>File: </span>
+
+            <button
+              (click)="CancelVideoUpload()"
+              title="Cancel"
+              class="bg-red-600/50 hover:bg-red-600/70 px-2 rounded-full flex flex-nowrap"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-x"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                stroke-width="1"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M18 6l-12 12"></path>
+                <path d="M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Video Details -->
+          <div class="text-sm flex-col flex gap-2 text-gray-500">
+            <div class="flex">
+              <span class="pr-4">Name:</span>
+              <span>{{ videoDetails.name }}</span>
+            </div>
+
+            <div class="flex">
+              <span class="pr-4">Size:</span>
+              <span>{{ videoSize }} MB</span>
+            </div>
+
+            <div class="flex">
+              <span class="pr-4">Type:</span>
+              <span>{{ videoDetails.type }}</span>
+            </div>
+          </div>
+
+          <div class="relative mt-4 flex flex-nowrap gap-2 items-center">
+            <svg
+              *ngIf="true"
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-progress animate-spin"
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              stroke-width="1"
+              stroke="currentColor"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M10 20.777a8.942 8.942 0 0 1 -2.48 -.969"></path>
+              <path d="M14 3.223a9.003 9.003 0 0 1 0 17.554"></path>
+              <path d="M4.579 17.093a8.961 8.961 0 0 1 -1.227 -2.592"></path>
+              <path
+                d="M3.124 10.5c.16 -.95 .468 -1.85 .9 -2.675l.169 -.305"
+              ></path>
+              <path d="M6.907 4.579a8.954 8.954 0 0 1 3.093 -1.356"></path>
+            </svg>
+
+            <span
+              *ngIf="videoProgress !== 100"
+              class="text-sm text-gray-500 flex gap-2"
+            >
+              Uploading Vídeo
+              <span *ngIf="videoProgress !== 0">
+                {{ videoProgress | number }}/100%
+              </span>
+            </span>
+
+            <span *ngIf="videoProgress === 100" class="text-sm text-gray-500">
+              Finished ✅
+            </span>
+          </div>
+        </section>
+
+        <emoji-mart
+          [ngClass]="{ block: showEmojiPicker, hidden: !showEmojiPicker }"
+          class="select-none absolute right-4 bottom-[4.3rem] z-50"
+          [isNative]="true"
+          [darkMode]="true"
+          (emojiSelect)="select($event)"
+          title="Pick your emoji"
+          [showPreview]="false"
+          [emojiTooltip]="true"
+          [color]="'#22c55e'"
+        ></emoji-mart>
+
+        <menu
+          *ngIf="showUploadFile"
+          class="absolute bottom-[4.5rem] left-4 w-48 rounded bg-[#111214] flex items-center justify-center p-2 text-[#B5BAC1] select-none flex-col"
+        >
+          <label
+            class="text-sm flex gap-2 items-center justify-center rounded hover:bg-green-600 hover:text-white cursor-pointer h-full w-full text-[#B5BAC1] p-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-photo-filled"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              stroke-width="1"
+              stroke="currentColor"
+              fill="#B5BAC1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path
+                d="M8.813 11.612c.457 -.38 .918 -.38 1.386 .011l.108 .098l4.986 4.986l.094 .083a1 1 0 0 0 1.403 -1.403l-.083 -.094l-1.292 -1.293l.292 -.293l.106 -.095c.457 -.38 .918 -.38 1.386 .011l.108 .098l4.674 4.675a4 4 0 0 1 -3.775 3.599l-.206 .005h-12a4 4 0 0 1 -3.98 -3.603l6.687 -6.69l.106 -.095zm9.187 -9.612a4 4 0 0 1 3.995 3.8l.005 .2v9.585l-3.293 -3.292l-.15 -.137c-1.256 -1.095 -2.85 -1.097 -4.096 -.017l-.154 .14l-.307 .306l-2.293 -2.292l-.15 -.137c-1.256 -1.095 -2.85 -1.097 -4.096 -.017l-.154 .14l-5.307 5.306v-9.585a4 4 0 0 1 3.8 -3.995l.2 -.005h12zm-2.99 5l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z"
+                stroke-width="0"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span class="text-sm flex items-center">Send image</span>
+            <input
+              accept="image/*"
+              type="file"
+              class="hidden"
+              (change)="SendImage($event)"
+            />
+          </label>
+
+          <label
+            class="text-sm flex gap-2 items-center justify-center rounded hover:bg-green-600 hover:text-white cursor-pointer h-full w-full text-[#B5BAC1] p-2 group"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-video group-hover:fill-white"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              stroke-width="1"
+              stroke="currentColor"
+              fill="#B5BAC1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path
+                d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4z"
+              ></path>
+              <path
+                d="M3 6m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"
+              ></path>
+            </svg>
+            <span class="text-sm flex items-center">Send Vídeo</span>
+            <input
+              accept="video/*"
+              type="file"
+              class="hidden"
+              (change)="SendVideo($event)"
+            />
+          </label>
+        </menu>
+
+        <!-- FULL IMAGE -->
+        <div
+          *ngIf="imageSrcFullScreen"
+          (click)="CloseFullScreenImage()"
+          aria-hidden="true"
+          class="left-0 top-0 w-screen h-screen z-50 fixed flex items-center justify-center backdrop-blur"
+          style="margin: 0px !important"
+        >
+          <img
+            class="select-none"
+            class="max-h-[75%] max-w-[75%] object-cover cursor-pointer select-none pointer-events-none"
+            src="{{ imageSrcFullScreen }}"
+            alt="image send by an user"
+          />
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-arrows-minimize absolute right-8 top-8 cursor-pointer"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            stroke-width="1"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M5 9l4 0l0 -4"></path>
+            <path d="M3 3l6 6"></path>
+            <path d="M5 15l4 0l0 4"></path>
+            <path d="M3 21l6 -6"></path>
+            <path d="M19 9l-4 0l0 -4"></path>
+            <path d="M15 9l6 -6"></path>
+            <path d="M19 15l-4 0l0 4"></path>
+            <path d="M15 15l6 6"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div class="p-4">
+        <div class="relative flex items-center">
+          <svg
+            title="Upload image"
+            (click)="showUploadFileMenu()"
+            class="absolute left-4 cursor-pointer"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              class="attachButtonPlus-3IYelE hover:fill-white/80"
+              fill="#B5BAC1"
+              d="M12 2.00098C6.486 2.00098 2 6.48698 2 12.001C2 17.515 6.486 22.001 12 22.001C17.514 22.001 22 17.515 22 12.001C22 6.48698 17.514 2.00098 12 2.00098ZM17 13.001H13V17.001H11V13.001H7V11.001H11V7.00098H13V11.001H17V13.001Z"
+            ></path>
+          </svg>
+
+          <form
+            class="w-full"
+            [formGroup]="MessageForm"
+            (ngSubmit)="sendMessage()"
+          >
+            <input
+              #input
+              formControlName="text"
+              class="flex items-center h-10 w-full rounded outline-none px-12 p-6 text-sm bg-[#383A40]"
+              type="text"
+              placeholder="Type your message…"
+            />
+          </form>
+
+          <svg
+            (click)="showEmojiPickerMenu()"
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-mood-smile-filled absolute right-4 cursor-pointer"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              class="hover:fill-yellow-400"
+              d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.8 10.946a1 1 0 0 0 -1.414 .014a2.5 2.5 0 0 1 -3.572 0a1 1 0 0 0 -1.428 1.4a4.5 4.5 0 0 0 6.428 0a1 1 0 0 0 -.014 -1.414zm-6.19 -5.286l-.127 .007a1 1 0 0 0 .117 1.993l.127 -.007a1 1 0 0 0 -.117 -1.993zm6 0l-.127 .007a1 1 0 0 0 .117 1.993l.127 -.007a1 1 0 0 0 -.117 -1.993z"
+              stroke-width="0"
+              fill="#B5BAC1"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </main>
+  </section>
+</main>
