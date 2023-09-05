@@ -16,6 +16,7 @@ import { DataBaseService } from 'src/app/services/database.service';
 import { FireStorageService } from 'src/app/services/FireStorage.service';
 import { SocketService } from 'src/app/services/socket.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 export interface Message {
   messageText: string;
@@ -50,7 +51,8 @@ export class ChatComponent implements AfterViewInit, OnInit {
     private database: DataBaseService,
     private FireStorageSVC: FireStorageService,
     private cdr: ChangeDetectorRef,
-    private __snackBar: MatSnackBar
+    private __snackBar: MatSnackBar,
+    private authentication: AuthenticationService
   ) {}
 
   ngOnInit(): void {
@@ -284,5 +286,13 @@ export class ChatComponent implements AfterViewInit, OnInit {
   bytesToMegaBytes(bytes: number) {
     const megabytes = bytes / (1024 * 1024);
     return megabytes.toFixed(2);
+  }
+
+  logOut() {
+    const question = confirm('Are you sure you want to log out?');
+
+    if (question) {
+      this.authentication.Logout();
+    }
   }
 }
