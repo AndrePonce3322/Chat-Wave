@@ -26,7 +26,7 @@
     "mouse-follower": "^1.1.2",
     "ngx-socket-io": "^4.5.1",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
+    "tslib": "^2.6.2",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
