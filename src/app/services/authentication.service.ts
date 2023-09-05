@@ -4,20 +4,23 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   signInWithPopup,
-  signOut
+  signOut,
 } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth, private router: Router) {}
 
   Google() {
     return signInWithPopup(this.auth, new GoogleAuthProvider());
   }
 
   Logout() {
+    this.router.navigate(['/']);
+    window.localStorage.removeItem('user');
     return signOut(this.auth);
   }
 
