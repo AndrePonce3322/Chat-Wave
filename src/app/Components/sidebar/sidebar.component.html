@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<section class="w-12 h-[200px] fixed right-8 top-6 flex flex-col gap-4 items-center select-none">
+<article class="w-12 h-[200px] fixed right-8 top-6 flex flex-col gap-4 items-center select-none">
 
   <div *ngIf="userData.img" class="h-8 w-[2.3rem] grid place-items-center text-2xl cursor-pointer relative">
     <img (click)="showOptions()" class="object-cover rounded-full hover:shadow-normal"
@@ -22,13 +22,20 @@
     </section>
 
   </div>
-  <div class="h-8 w-full grid place-items-center text-2xl cursor-pointer">
-    <i class="ti ti-notification" matTooltip="Notifications"></i>
-  </div>
-  <div class="h-8 w-full grid place-items-center text-2xl text-yellow-300 cursor-pointer">
-    <i class="ti ti-star-filled" matTooltip="Repository"></i>
-  </div>
-  <div class="h-8 w-full grid place-items-center text-2xl text-cyan-500 cursor-pointer">
-    <i class="ti ti-brand-linkedin" matTooltip="Linkedin profile"></i>
-  </div>
-</section>
+
+  <section class="flex flex-col gap-4 mt-2">
+    <div class="h-8 w-full grid place-items-center text-2xl cursor-pointer">
+      <i class="ti ti-notification" matTooltip="Notifications"></i>
+    </div>
+    <div class="h-8 w-full grid place-items-center text-2xl text-yellow-300 cursor-pointer">
+      <i class="ti ti-star-filled" matTooltip="Repository"></i>
+    </div>
+    <div class="h-8 w-full grid place-items-center text-2xl text-cyan-500 cursor-pointer">
+      <i class="ti ti-brand-linkedin" matTooltip="Linkedin profile"></i>
+    </div>
+    <div class="h-8 w-full grid place-items-center text-2xl text-green-500 cursor-pointer">
+      <i *ngIf="userData.email" (click)="GoToChat()" class="ti ti-brand-wechat" matTooltip="Go to chat"></i>
+    </div>
+  </section>
+
+</article>
