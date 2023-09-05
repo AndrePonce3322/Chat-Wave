@@ -1,8 +1,6 @@
 <h1>ChatWave - App</h1>
 
-## Description
-
-Chat Anywhere is a secure and efficient messaging application built with Angular. It allows users to send text messages, images, videos, and more with ease. With Chat Anywhere, your messages are delivered safely and quickly to your intended recipients.
+ChatWave is a secure and efficient messaging application built with Angular. It allows users to send text messages, images, videos, and more with ease. With Chat Anywhere, your messages are delivered safely and quickly to your intended recipients.
 
 ## Features
 
