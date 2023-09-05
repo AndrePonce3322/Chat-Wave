@@ -50,3 +50,7 @@ tailwind.config.js
 .firebase
 *-debug.log
 .runtimeconfig.json
+
+# Local Netlify folder
+.netlify
+src/environments/environment.prod.ts
