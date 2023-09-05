@@ -57,4 +57,14 @@ export class SidebarComponent implements OnInit {
       name: null,
     };
   }
+
+  GoToChat() {
+    try {
+      if (this.userData.email) {
+        this.router.navigate(['/chat']);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
