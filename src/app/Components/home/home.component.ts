@@ -23,13 +23,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (window.localStorage.getItem('user')) {
+      this.router.navigate(['/chat']);
       this.showLogInButtons = false;
     }
   }
 
   async LogWithGoogle() {
     if (this.auth.currentUser) {
-      // return this.router.navigate(['/chat']);
+      return this.router.navigate(['/chat']);
     }
 
     return this.authentication.Google().then((val) => {
@@ -55,15 +56,4 @@ export class HomeComponent implements OnInit {
     return this.authentication.Logout();
   }
 
-  async LogWithGitHub() {
-    if (this.auth.currentUser) {
-      return this.router.navigate(['/chat']);
-    }
-
-    return this.authentication.GitHub().then((val) => {
-      // Save user data in local storage
-      window.localStorage.setItem('user', JSON.stringify(val.user));
-      this.router.navigate(['/chat']);
-    });
-  }
 }
