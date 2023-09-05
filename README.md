@@ -1,4 +1,4 @@
-# Chat App
+# ChatWave - App
 
 ![Chat Anywhere Logo](https://ngchatapp.netlify.app/assets/favicon.ico/)
 
