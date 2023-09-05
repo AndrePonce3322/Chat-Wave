@@ -17,7 +17,7 @@ import { ChatComponent } from './Components/chat/chat.component';
 // npm packages
 import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment.prod';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 
 // HTTP
