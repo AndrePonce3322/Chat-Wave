@@ -24,8 +24,7 @@ To get started with Chat Anywhere, follow these steps:
    git clone https://github.com/your-username/your-repo.git
    cd your-repo
    npm install
-  ng serve
-  ```
+   ng serve
 
 ## Usage
 Once the application is running, you can access it by opening your web browser and navigating to http://localhost:4200. Sign in with your Google account to start chatting.
