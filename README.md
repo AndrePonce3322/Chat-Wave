@@ -21,21 +21,13 @@ To get started with Chat Anywhere, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo.git
+   [git clone https://github.com/andreponce3322/.git](https://github.com/AndrePonce3322/ChatApp.git)
    cd your-repo
    npm install
    ng serve
 
 ## Usage
 Once the application is running, you can access it by opening your web browser and navigating to http://localhost:4200. Sign in with your Google account to start chatting.
-
-## Contributing
-We welcome contributions to Chat Anywhere. To contribute, please follow these steps:
-
-Fork the repository.
-Create a new branch for your feature or bug fix: git checkout -b feature/your-feature-name.
-Commit your changes and push to your forked repository: git commit -m "Add your feature" && git push origin feature/your-feature-name.
-Create a pull request to the main repository.
 
 ## Contact
 If you have any questions or suggestions, feel free to contact us:
