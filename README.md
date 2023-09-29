@@ -21,8 +21,8 @@ To get started with Chat Anywhere, follow these steps:
 
 1. Clone the repository:
    ```bash
-   [git clone https://github.com/andreponce3322/.git](https://github.com/AndrePonce3322/ChatApp.git)
-   cd your-repo
+   git clone https://github.com/AndrePonce3322/ChatApp.git
+   cd ChatApp
    npm install
    ng serve
 
