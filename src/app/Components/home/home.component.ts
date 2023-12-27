@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   }
 
   async LogWithGoogle() {
-    if (this.auth.currentUser) {
+    if (this.auth.currentUser && window.localStorage.getItem('user')) {
       return this.router.navigate(['/chat']);
     }
 
