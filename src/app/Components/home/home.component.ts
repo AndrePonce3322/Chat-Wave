@@ -22,9 +22,18 @@ export class HomeComponent implements OnInit {
   showLogInButtons = true;
 
   ngOnInit(): void {
-    if (window.localStorage.getItem('user')) {
+    if (this.auth.currentUser) {
+      const bodyData = {
+        _id: this.auth.currentUser.uid,
+        email: this.auth.currentUser.email,
+        name: this.auth.currentUser.displayName,
+        img: this.auth.currentUser.photoURL,
+      };
+
+      // Set to the observable and local storage
+      this.shareUserData.CurrentUser.next(bodyData);
+      window.localStorage.setItem('user', JSON.stringify(bodyData));
       this.router.navigate(['/chat']);
-      this.showLogInButtons = false;
     }
   }
 
