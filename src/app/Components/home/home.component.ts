@@ -34,6 +34,8 @@ export class HomeComponent implements OnInit {
       this.shareUserData.CurrentUser.next(bodyData);
       window.localStorage.setItem('user', JSON.stringify(bodyData));
       this.router.navigate(['/chat']);
+    } else if (window.localStorage.getItem('user')) {
+      this.router.navigate(['/chat']);
     }
   }
 
