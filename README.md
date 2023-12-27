@@ -1,10 +1,6 @@
-# Chat Anywhere
+<h1>ChatWave - App</h1>
 
-![Chat Anywhere Logo](https://ngchatapp.netlify.app/assets/favicon.ico/)
-
-## Description
-
-Chat Anywhere is a secure and efficient messaging application built with Angular. It allows users to send text messages, images, videos, and more with ease. With Chat Anywhere, your messages are delivered safely and quickly to your intended recipients.
+ChatWave is a secure and efficient messaging application built with Angular. It allows users to send text messages, images, videos, and more with ease. With Chat Wave, your messages are delivered safely and quickly to your intended recipients.
 
 ## Features
 
@@ -25,21 +21,13 @@ To get started with Chat Anywhere, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
+   git clone https://github.com/AndrePonce3322/ChatApp.git
+   cd ChatApp
    npm install
    ng serve
 
 ## Usage
 Once the application is running, you can access it by opening your web browser and navigating to http://localhost:4200. Sign in with your Google account to start chatting.
-
-## Contributing
-We welcome contributions to Chat Anywhere. To contribute, please follow these steps:
-
-Fork the repository.
-Create a new branch for your feature or bug fix: git checkout -b feature/your-feature-name.
-Commit your changes and push to your forked repository: git commit -m "Add your feature" && git push origin feature/your-feature-name.
-Create a pull request to the main repository.
 
 ## Contact
 If you have any questions or suggestions, feel free to contact us:
