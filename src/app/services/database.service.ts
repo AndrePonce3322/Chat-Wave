@@ -8,7 +8,7 @@ export interface UserData {
   name: string | null;
 }
 
-export interface UserDataAndMessages{
+export interface UserDataAndMessages {
   img: string | null;
   email: string | null;
   name: string | null;
@@ -39,7 +39,6 @@ export interface MessagesWithUser {
   mesagges: Array<MessageDataResponse>;
 }
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -56,7 +55,7 @@ export class DataBaseService {
     return this.http.get<MessagesWithUser>(this.URL);
   }
 
-  getUsers(){
+  getUsers() {
     return this.http.get<Array<UserDataAndMessages>>(`${this.URL}/users`);
   }
 }

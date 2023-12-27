@@ -54,3 +54,5 @@ tailwind.config.js
 # Local Netlify folder
 .netlify
 src/environments/environment.prod.ts
+
+.vercel

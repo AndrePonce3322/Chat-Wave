@@ -45,7 +45,12 @@
         <span class="text-green-400">&#9679;</span>
       </div>
 
-      <button (click)="logOut()" matTooltip="Log out" mat-raised-button color="none">
+      <button
+        (click)="logOut()"
+        matTooltip="Log out"
+        mat-raised-button
+        color="none"
+      >
         Log out
       </button>
     </div>
@@ -80,7 +85,11 @@
               class="bg-[#4E5058] p-3 rounded-r-lg rounded-bl-lg flex flex-col gap-2 relative"
             >
               <!-- Message content -->
-              <p class="text-sm" *ngIf="message.messageText !== ''">
+              <p
+                class="text-sm"
+                *ngIf="message.messageText !== ''"
+                style="word-break: break-word"
+              >
                 {{ message.messageText }}
               </p>
 

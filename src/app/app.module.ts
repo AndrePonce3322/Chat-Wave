@@ -28,7 +28,7 @@ import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 
 const config: SocketIoConfig = {
-  url: 'https://chat-api-hhzn-dev.fl0.io', // socket server url;
+  url: 'http://localhost:3001', // socket server url;
   options: {
     transports: ['websocket'],
   },
