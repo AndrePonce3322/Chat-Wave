@@ -43,7 +43,7 @@ export interface MessagesWithUser {
   providedIn: 'root',
 })
 export class DataBaseService {
-  private URL = environment.database;
+  private URL = environment.url;
 
   constructor(private http: HttpClient) {}
 

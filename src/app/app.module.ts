@@ -28,7 +28,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
 const config: SocketIoConfig = {
-  url: 'http://localhost:3001', // socket server url;
+  url: 'https://chatapi-socket-dev-mgdp.2.us-1.fl0.io', // socket server url;
   options: {
     transports: ['websocket'],
   },
